@@ -1,0 +1,478 @@
+[
+  {
+    "actors": [
+      {
+        "firstName": "Robert",
+        "lastName": " Downey Jr."
+      },
+      {
+        "firstName": "Chris",
+        "lastName": "Evans"
+      },
+      {
+        "firstName": "Scarlett",
+        "lastName": "Johansson"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Anthony",
+      "lastName": "Russo"
+    },
+    "genres": ["Adventure", "Sci-fi"],
+    "name": "Avengers: Endgame",
+    "rating": 4,
+    "synopsis": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "year": 2018
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Peter",
+        "lastName": " Sallis"
+      },
+      {
+        "firstName": "Ralph",
+        "lastName": "Fiennes"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Steve",
+      "lastName": "Box"
+    },
+    "genres": ["Animation", "Adventure", "Comedy"],
+    "name": "The Curse of the Were-Rabbit",
+    "rating": 4,
+    "synopsis": "Wallace and his loyal dog, Gromit, set out to discover the mystery behind the garden sabotage that plagues their village and threatens the annual giant vegetable growing contest.",
+    "year": 2005
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Michelle",
+        "lastName": " Dockery"
+      },
+      {
+        "firstName": "Matthew",
+        "lastName": "Goode"
+      },
+      {
+        "firstName": "Tuppence",
+        "lastName": "Middleton"
+      }
+    ],
+    "ageLimit": 7,
+    "director": {
+      "firstName": "Michael",
+      "lastName": "Enger"
+    },
+    "genres": ["Drama"],
+    "name": "Downtown Abbey",
+    "rating": 3,
+    "synopsis": "The continuing story of the Crawley family, wealthy owners of a large estate in the English countryside in the early 20th century.",
+    "year": 2019
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Brad",
+        "lastName": " Pitt"
+      },
+      {
+        "firstName": "Tommy",
+        "lastName": "Lee Jones"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "James",
+      "lastName": "Grey"
+    },
+    "genres": ["Adventure", "Drama", "Mystery"],
+    "name": "Ad Astra",
+    "rating": 3,
+    "synopsis": "Astronaut Roy McBride undertakes a mission across an unforgiving solar system to uncover the truth about his missing father and his doomed expedition that now, 30 years later, threatens the universe.",
+    "year": 2019
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Jim",
+        "lastName": " Henson"
+      },
+      {
+        "firstName": "Catherine",
+        "lastName": "Mullen"
+      },
+      {
+        "firstName": "Frank",
+        "lastName": "Oz"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Jim",
+      "lastName": "Henson"
+    },
+    "genres": ["Adventure", "Familty", "Fantasy"],
+    "name": "The Dark Crystal",
+    "rating": 3,
+    "synopsis": "On another planet in the distant past, a Gelfling embarks on a quest to find the missing shard of a magical crystal, and so restore order to his world.",
+    "year": 1982
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Sigourney",
+        "lastName": " Weaver"
+      }
+    ],
+    "ageLimit": 16,
+    "director": {
+      "firstName": "James",
+      "lastName": "Cameron"
+    },
+    "genres": ["Action", "Adventure", "Sci-fi"],
+    "name": "Aliens",
+    "rating": 5,
+    "synopsis": "Ellen Ripley is rescued by a deep salvage team after being in hypersleep for 57 years. The moon that the Nostromo visited has been colonized, but contact is lost. This time, colonial marines have impressive firepower, but will that be enough?",
+    "year": 1986
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Keir",
+        "lastName": " Dullea"
+      },
+      {
+        "firstName": "Gary",
+        "lastName": " Lockwood"
+      }
+    ],
+    "ageLimit": 8,
+    "director": {
+      "firstName": "Stanley",
+      "lastName": "Kubrick"
+    },
+    "genres": ["Adventure", "Sci-fi"],
+    "name": "2001: A Space Odyssey",
+    "rating": 5,
+    "synopsis": "After discovering a mysterious artifact buried beneath the Lunar surface, mankind sets off on a quest to find its origins with help from intelligent supercomputer H.A.L. 9000.",
+    "year": 1986
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Nicholas",
+        "lastName": " Dullea"
+      },
+      {
+        "firstName": "Lily",
+        "lastName": " Collins"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Dome",
+      "lastName": "Karkukoski"
+    },
+    "genres": ["Biography", "Drama", "War"],
+    "name": "Tolkien",
+    "rating": 2,
+    "synopsis": "The formative years of the orphaned author J.R.R. Tolkien as he finds friendship, love and artistic inspiration among a group of fellow outcasts at school.",
+    "year": 2019
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Sally",
+        "lastName": "Hawkins"
+      },
+      {
+        "firstName": "Michael",
+        "lastName": "Shannon"
+      },
+      {
+        "firstName": "Octavia",
+        "lastName": "Spencer"
+      }
+    ],
+    "ageLimit": 16,
+    "director": {
+      "firstName": "Guillermo",
+      "lastName": "del Toro"
+    },
+    "genres": ["Adventure", "Drama", "Fantasy"],
+    "name": "The Shape of Water",
+    "rating": 4,
+    "synopsis": "At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.",
+    "year": 2017
+  },
+  {
+    "actors": [
+      {
+        "firstName": "James",
+        "lastName": "Stewart"
+      },
+      {
+        "firstName": "Kim",
+        "lastName": "Novak"
+      },
+      {
+        "firstName": "Barbara",
+        "lastName": "Bel Geddes"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Alfred",
+      "lastName": "Hitchcock"
+    },
+    "genres": ["Mystery", "Romance", "Thriller"],
+    "name": "Vertigo",
+    "rating": 5,
+    "synopsis": "A former police detective juggles wrestling with his personal demons and becoming obsessed with a hauntingly beautiful woman.",
+    "year": 1958
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Ryan",
+        "lastName": "Gosling"
+      },
+      {
+        "firstName": "Harrison",
+        "lastName": "Ford"
+      },
+      {
+        "firstName": "Robin",
+        "lastName": "Wright"
+      }
+    ],
+    "ageLimit": 15,
+    "director": {
+      "firstName": "Denis",
+      "lastName": "Villeneuve"
+    },
+    "genres": ["Action", "Drama", "Mystery"],
+    "name": "Blade Runner 2049",
+    "rating": 5,
+    "synopsis": "A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years.",
+    "year": 2017
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Ryan",
+        "lastName": "Gosling"
+      },
+      {
+        "firstName": "Carey",
+        "lastName": "Mulligan"
+      }
+    ],
+    "ageLimit": 18,
+    "director": {
+      "firstName": "Nicholas",
+      "lastName": "Winding Refn"
+    },
+    "genres": ["Crime", "Drama"],
+    "name": "Drive",
+    "rating": 4,
+    "synopsis": "A mysterious Hollywood stuntman and mechanic moonlights as a getaway driver and finds himself in trouble when he helps out his neighbor.",
+    "year": 2011
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Jim",
+        "lastName": "Carrey"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Daniels"
+      },
+      {
+        "firstName": "Lauren",
+        "lastName": "Holly"
+      }
+    ],
+    "ageLimit": 12,
+    "director": {
+      "firstName": "Peter",
+      "lastName": "Farrelly"
+    },
+    "genres": ["Comedy"],
+    "name": "Dumb and Dumber",
+    "rating": 3,
+    "synopsis": "After a woman leaves a briefcase at the airport terminal, a dumb limo driver and his dumber friend set out on a hilarious cross-country road trip to Aspen, to return the briefcase to its owner.",
+    "year": 1994
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Harrison",
+        "lastName": "Ford"
+      },
+      {
+        "firstName": "Karen",
+        "lastName": "Allen"
+      }
+    ],
+    "ageLimit": 0,
+    "director": {
+      "firstName": "Steven",
+      "lastName": "Spielberg"
+    },
+    "genres": ["Action", "Adventure"],
+    "name": "Raiders of the Lost Ark",
+    "rating": 4,
+    "synopsis": "In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler's Nazis can obtain its awesome powers.",
+    "year": 1981
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Hoyt",
+        "lastName": "Axton"
+      },
+      {
+        "firstName": "John",
+        "lastName": "Louie"
+      }
+    ],
+    "ageLimit": 15,
+    "director": {
+      "firstName": "Joe",
+      "lastName": "Dante"
+    },
+    "genres": ["Comedy", "Fantasy", "Horror"],
+    "name": "Gremlins",
+    "rating": 3,
+    "synopsis": "A boy inadvertently breaks three important rules concerning his new pet and unleashes a horde of malevolently mischievous monsters on a small town.",
+    "year": 1984
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Brooklynn",
+        "lastName": "Prince"
+      },
+      {
+        "firstName": "Christopher",
+        "lastName": "Rivera"
+      },
+      {
+        "firstName": "Willem",
+        "lastName": "Dafoe"
+      }
+    ],
+    "ageLimit": 15,
+    "director": {
+      "firstName": "Sean",
+      "lastName": "Baker"
+    },
+    "genres": ["Drama"],
+    "name": "The Florida Project",
+    "rating": 3,
+    "synopsis": "Set over one summer, the film follows precocious six-year-old Moonee as she courts mischief and adventure with her ragtag playmates and bonds with her rebellious but caring mother, all while living in the shadows of Walt Disney World.",
+    "year": 2017
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Arnold",
+        "lastName": "Schwarzenegger"
+      },
+      {
+        "firstName": "Carl",
+        "lastName": "Weathers"
+      }
+    ],
+    "ageLimit": 18,
+    "director": {
+      "firstName": "John",
+      "lastName": "McTiernan"
+    },
+    "genres": ["Action", "Adventure", "Sci-fi"],
+    "name": "Predator",
+    "rating": 4,
+    "synopsis": "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+    "year": 1987
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Rumi",
+        "lastName": "Hiiragi"
+      },
+      {
+        "firstName": "Miyu",
+        "lastName": "Irino"
+      }
+    ],
+    "ageLimit": 0,
+    "director": {
+      "firstName": "Hayao",
+      "lastName": "Miyazaki"
+    },
+    "genres": ["Animation", "Adventure", "Family"],
+    "name": "Spirited Away",
+    "rating": 5,
+    "synopsis": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+    "year": 2001
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Tom",
+        "lastName": "Hanks"
+      },
+      {
+        "firstName": "Tom",
+        "lastName": "Sizemore"
+      },
+      {
+        "firstName": "Edward",
+        "lastName": "Burns"
+      }
+    ],
+    "ageLimit": 15,
+    "director": {
+      "firstName": "Steven",
+      "lastName": "Spielberg"
+    },
+    "genres": ["Drama", "War"],
+    "name": "Saving Private Ryan",
+    "rating": 3,
+    "synopsis": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "year": 1998
+  },
+  {
+    "actors": [
+      {
+        "firstName": "Sylvester",
+        "lastName": "Stallone"
+      },
+      {
+        "firstName": "Paz",
+        "lastName": "Vega"
+      },
+      {
+        "firstName": "Yvette",
+        "lastName": "Monreal"
+      }
+    ],
+    "ageLimit": 18,
+    "director": {
+      "firstName": "Adrian",
+      "lastName": "Grunberg"
+    },
+    "genres": ["Action", "Adventure", "Thriller"],
+    "name": "Rambo: Last Blood",
+    "rating": 2,
+    "synopsis": "Rambo must confront his past and unearth his ruthless combat skills to exact revenge in a final mission.",
+    "year": 2019
+  }
+]
