@@ -5,7 +5,8 @@ import {
 } from '@nestjs/common';
 
 import { StorageService } from '../storage/storage.service';
-import { MovieWithRelations } from '../storage/storage.types';
+import { MovieWithRelations, Person } from '../storage/storage.types';
+import { CreateMovieDto } from './create-movie.dto';
 
 @Injectable()
 export class MoviesService {
@@ -39,6 +40,46 @@ export class MoviesService {
       );
 
       throw new ServiceUnavailableException('Service is unavailable');
+    }
+  }
+
+  async create(dto: CreateMovieDto): Promise<MovieWithRelations> {
+    try {
+      const director = await this.storage.findOrCreatePerson(
+        dto.director.firstName,
+        dto.director.lastName,
+        'DIRECTOR',
+      );
+
+      const movie = await this.storage.insertMovie({
+        name: dto.name,
+        year: dto.year,
+        ageLimit: dto.ageLimit,
+        rating: dto.rating,
+        synopsis: dto.synopsis ?? null,
+        directorId: director.id,
+      });
+
+      const actors: Person[] = [];
+      for (const actor of dto.actors) {
+        const person = await this.storage.findOrCreatePerson(
+          actor.firstName,
+          actor.lastName,
+          'ACTOR',
+        );
+        actors.push(person);
+        await this.storage.linkActorToMovie(movie.id, person.id);
+      }
+
+      return {
+        ...movie,
+        director,
+        actors,
+      };
+    } catch (err) {
+      const error = err as Error;
+      this.logger.error('Failed to create movie', error.stack);
+      throw new ServiceUnavailableException('Failed to create movie');
     }
   }
 }

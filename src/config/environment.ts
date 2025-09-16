@@ -17,8 +17,23 @@ export interface AppConfig {
 }
 
 export function loadConfig(): AppConfig {
+  let env: Environment;
+
+  switch (process.env.NODE_ENV) {
+    case Environment.Production:
+      env = Environment.Production;
+      break;
+    case Environment.Test:
+      env = Environment.Test;
+      break;
+    case Environment.Development:
+    default:
+      env = Environment.Development;
+      break;
+  }
+
   return {
-    env: (process.env.NODE_ENV as Environment) ?? Environment.Development,
+    env,
     port: parseInt(process.env.PORT ?? '3000', 10),
     db: {
       host: process.env.POSTGRES_HOST ?? 'localhost',
@@ -28,4 +43,8 @@ export function loadConfig(): AppConfig {
       name: process.env.POSTGRES_NAME ?? 'moviesdb',
     },
   };
+}
+
+export function isDev(env: Environment): boolean {
+  return env === Environment.Development;
 }

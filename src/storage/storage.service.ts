@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 
 import * as schema from '../config/schema';
 import { movieActors, movies, people } from '../config/schema';
@@ -31,5 +31,43 @@ export class StorageService {
       movieActor: row.movie_actors,
       person: row.people,
     }));
+  }
+
+  async findOrCreatePerson(
+    firstName: string,
+    lastName: string,
+    type: 'ACTOR' | 'DIRECTOR',
+  ): Promise<Person> {
+    const [existing] = await this.storage
+      .select()
+      .from(people)
+      .where(
+        and(
+          eq(people.firstName, firstName),
+          eq(people.lastName, lastName),
+          eq(people.type, type),
+        ),
+      );
+
+    if (existing) return existing;
+
+    const [inserted] = await this.storage
+      .insert(people)
+      .values({ firstName, lastName, type })
+      .returning();
+
+    return inserted;
+  }
+
+  async insertMovie(data: Omit<Movie, 'id'>): Promise<Movie> {
+    const [inserted] = await this.storage
+      .insert(movies)
+      .values(data)
+      .returning();
+    return inserted;
+  }
+
+  async linkActorToMovie(movieId: number, personId: number): Promise<void> {
+    await this.storage.insert(movieActors).values({ movieId, personId });
   }
 }

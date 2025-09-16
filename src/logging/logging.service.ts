@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger, LoggerService } from '@nestjs/common';
 import type { AppConfig } from '../config/environment';
-import { Environment } from '../config/environment';
+import { isDev } from '../config/environment';
 
 @Injectable()
 export class LoggingService implements LoggerService {
@@ -17,22 +17,22 @@ export class LoggingService implements LoggerService {
   }
 
   error(message: string, trace?: string, context?: string) {
-    this.logger.error(message, this.isDev() ? trace : undefined, context);
+    this.logger.error(
+      message,
+      isDev(this.config.env) ? trace : undefined,
+      context,
+    );
   }
 
   debug(message: string, context?: string) {
-    if (this.isDev()) {
+    if (isDev(this.config.env)) {
       this.logger.debug(message, context);
     }
   }
 
   verbose(message: string, context?: string) {
-    if (this.isDev()) {
+    if (isDev(this.config.env)) {
       this.logger.verbose(message, context);
     }
-  }
-
-  private isDev() {
-    return this.config.env === Environment.Development;
   }
 }

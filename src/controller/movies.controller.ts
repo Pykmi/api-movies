@@ -1,5 +1,7 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
   ApiOkResponse,
   ApiOperation,
   ApiSecurity,
@@ -12,6 +14,7 @@ import { MovieWithRelations } from '../storage/storage.types';
 import { MoviesService } from './movies.service';
 import { ErrorResponse, MovieDto } from './movies.dto';
 import { ApiKeyGuard } from 'src/auth/api-key.guard';
+import { CreateMovieDto } from './create-movie.dto';
 
 @ApiTags('movies')
 @ApiSecurity('api-key')
@@ -35,5 +38,25 @@ export class MoviesController {
   })
   async findAll(): Promise<MovieWithRelations[]> {
     return this.moviesService.findAllWithRelations();
+  }
+
+  @Post()
+  @ApiOperation({
+    summary: 'Create a new movie',
+    description: 'Adds a new movie with director and actors',
+  })
+  @ApiCreatedResponse({
+    description: 'Movie successfully created',
+    type: MovieDto,
+  })
+  @ApiBadRequestResponse({
+    description: 'Validation failed',
+    type: ErrorResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Missing or invalid API key',
+  })
+  async create(@Body() dto: CreateMovieDto): Promise<MovieWithRelations> {
+    return this.moviesService.create(dto);
   }
 }
