@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiCreatedResponse,
@@ -58,5 +58,19 @@ export class MoviesController {
   })
   async create(@Body() dto: CreateMovieDto): Promise<MovieWithRelations> {
     return this.moviesService.create(dto);
+  }
+
+  @Get('search')
+  @ApiOperation({
+    summary: 'Get all movies or search',
+    description:
+      'Returns all movies with director and actors. If `search` query param is provided, performs a keyword search.',
+  })
+  @ApiOkResponse({ type: [MovieDto] })
+  async search(@Query('q') q: string): Promise<MovieWithRelations[]> {
+    if (q) {
+      return this.moviesService.searchWithRelations(q);
+    }
+    return this.moviesService.findAllWithRelations();
   }
 }

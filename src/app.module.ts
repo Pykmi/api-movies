@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StorageModule } from './storage/storage.module';
 import { HealthController } from './health/health.controller';
@@ -20,7 +19,7 @@ const appConfig = loadConfig();
     }),
     StorageModule,
   ],
-  controllers: [AppController, HealthController, MoviesController],
+  controllers: [HealthController, MoviesController],
   providers: [
     AppService,
     MoviesService,

@@ -14,35 +14,6 @@ export class MoviesService {
 
   constructor(private readonly storage: StorageService) {}
 
-  async findAllWithRelations(): Promise<MovieWithRelations[]> {
-    try {
-      const movies = await this.storage.findAllMovies();
-
-      return Promise.all(
-        movies.map(async (m) => {
-          const [director] = await this.storage.findPersonById(m.directorId);
-          const actorRows = await this.storage.findActorsByMovie(m.id);
-
-          return {
-            ...m,
-            director: director ?? null,
-            actors: actorRows.map((a) => a.person),
-          };
-        }),
-      );
-    } catch (err) {
-      const error = err as Error;
-
-      this.logger.error(
-        'Database query failed',
-        error.stack,
-        MoviesService.name,
-      );
-
-      throw new ServiceUnavailableException('Service is unavailable');
-    }
-  }
-
   async create(dto: CreateMovieDto): Promise<MovieWithRelations> {
     try {
       const director = await this.storage.findOrCreatePerson(
@@ -80,6 +51,58 @@ export class MoviesService {
       const error = err as Error;
       this.logger.error('Failed to create movie', error.stack);
       throw new ServiceUnavailableException('Failed to create movie');
+    }
+  }
+
+  async findAllWithRelations(): Promise<MovieWithRelations[]> {
+    try {
+      const movies = await this.storage.findAllMovies();
+
+      return Promise.all(
+        movies.map(async (m) => {
+          const [director] = await this.storage.findPersonById(m.directorId);
+          const actorRows = await this.storage.findActorsByMovie(m.id);
+
+          return {
+            ...m,
+            director: director ?? null,
+            actors: actorRows.map((a) => a.person),
+          };
+        }),
+      );
+    } catch (err) {
+      const error = err as Error;
+
+      this.logger.error(
+        'Database query failed',
+        error.stack,
+        MoviesService.name,
+      );
+
+      throw new ServiceUnavailableException('Service is unavailable');
+    }
+  }
+
+  async searchWithRelations(keyword: string): Promise<MovieWithRelations[]> {
+    try {
+      const movies = await this.storage.search(keyword);
+
+      return Promise.all(
+        movies.map(async (m) => {
+          const [director] = await this.storage.findPersonById(m.directorId);
+          const actorRows = await this.storage.findActorsByMovie(m.id);
+
+          return {
+            ...m,
+            director: director ?? null,
+            actors: actorRows.map((a) => a.person),
+          };
+        }),
+      );
+    } catch (err) {
+      const error = err as Error;
+      this.logger.error('Database search failed', error.stack);
+      throw new ServiceUnavailableException('Service is unavailable');
     }
   }
 }

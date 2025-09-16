@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, ilike, or } from 'drizzle-orm';
 
 import * as schema from '../config/schema';
 import { movieActors, movies, people } from '../config/schema';
 import { Movie, MovieActorWithPerson, Person } from './storage.types';
+import { alias } from 'drizzle-orm/pg-core';
 
 @Injectable()
 export class StorageService {
@@ -69,5 +70,30 @@ export class StorageService {
 
   async linkActorToMovie(movieId: number, personId: number): Promise<void> {
     await this.storage.insert(movieActors).values({ movieId, personId });
+  }
+
+  async search(keyword: string): Promise<Movie[]> {
+    const pattern = `%${keyword}%`;
+
+    const d = alias(people, 'd');
+    const a = alias(people, 'a');
+
+    const rows = await this.storage
+      .selectDistinct({ movie: movies }) // avoid duplicates
+      .from(movies)
+      .leftJoin(d, eq(movies.directorId, d.id))
+      .leftJoin(movieActors, eq(movies.id, movieActors.movieId))
+      .leftJoin(a, eq(movieActors.personId, a.id))
+      .where(
+        or(
+          ilike(movies.name, pattern),
+          ilike(d.firstName, pattern),
+          ilike(d.lastName, pattern),
+          ilike(a.firstName, pattern),
+          ilike(a.lastName, pattern),
+        ),
+      );
+
+    return rows.map((r) => r.movie);
   }
 }
