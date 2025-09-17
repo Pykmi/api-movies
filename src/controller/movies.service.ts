@@ -32,6 +32,7 @@ export class MoviesService {
       });
 
       const actors: Person[] = [];
+
       for (const actor of dto.actors) {
         const person = await this.storage.findOrCreatePerson(
           actor.firstName,
@@ -59,14 +60,17 @@ export class MoviesService {
       const movies = await this.storage.findAllMovies();
 
       return Promise.all(
-        movies.map(async (m) => {
-          const [director] = await this.storage.findPersonById(m.directorId);
-          const actorRows = await this.storage.findActorsByMovie(m.id);
+        movies.map(async (movie) => {
+          const [director] = await this.storage.findPersonById(
+            movie.directorId,
+          );
+
+          const actorRows = await this.storage.findActorsByMovie(movie.id);
 
           return {
-            ...m,
+            ...movie,
             director: director ?? null,
-            actors: actorRows.map((a) => a.person),
+            actors: actorRows.map((actor) => actor.person),
           };
         }),
       );
@@ -88,14 +92,17 @@ export class MoviesService {
       const movies = await this.storage.search(keyword);
 
       return Promise.all(
-        movies.map(async (m) => {
-          const [director] = await this.storage.findPersonById(m.directorId);
-          const actorRows = await this.storage.findActorsByMovie(m.id);
+        movies.map(async (movie) => {
+          const [director] = await this.storage.findPersonById(
+            movie.directorId,
+          );
+
+          const actorRows = await this.storage.findActorsByMovie(movie.id);
 
           return {
-            ...m,
+            ...movie,
             director: director ?? null,
-            actors: actorRows.map((a) => a.person),
+            actors: actorRows.map((actor) => actor.person),
           };
         }),
       );

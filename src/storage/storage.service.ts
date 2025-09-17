@@ -75,25 +75,25 @@ export class StorageService {
   async search(keyword: string): Promise<Movie[]> {
     const pattern = `%${keyword}%`;
 
-    const d = alias(people, 'd');
-    const a = alias(people, 'a');
+    const director = alias(people, 'd');
+    const actor = alias(people, 'a');
 
     const rows = await this.storage
       .selectDistinct({ movie: movies })
       .from(movies)
-      .leftJoin(d, eq(movies.directorId, d.id))
+      .leftJoin(director, eq(movies.directorId, director.id))
       .leftJoin(movieActors, eq(movies.id, movieActors.movieId))
-      .leftJoin(a, eq(movieActors.personId, a.id))
+      .leftJoin(actor, eq(movieActors.personId, actor.id))
       .where(
         or(
           ilike(movies.name, pattern),
-          ilike(d.firstName, pattern),
-          ilike(d.lastName, pattern),
-          ilike(a.firstName, pattern),
-          ilike(a.lastName, pattern),
+          ilike(director.firstName, pattern),
+          ilike(director.lastName, pattern),
+          ilike(actor.firstName, pattern),
+          ilike(actor.lastName, pattern),
         ),
       );
 
-    return rows.map((r) => r.movie);
+    return rows.map((row) => row.movie);
   }
 }

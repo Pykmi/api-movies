@@ -61,9 +61,9 @@ export class MoviesController {
   @ApiUnauthorizedResponse({
     description: 'Missing or invalid API key',
   })
-  async search(@Query('q') q?: string): Promise<MovieWithRelations[]> {
-    if (q) {
-      return this.moviesService.searchWithRelations(q);
+  async search(@Query('q') query?: string): Promise<MovieWithRelations[]> {
+    if (query) {
+      return this.moviesService.searchWithRelations(query);
     }
     return this.moviesService.findAllWithRelations();
   }

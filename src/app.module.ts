@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
 import { AppService } from './app.service';
 import { StorageModule } from './storage/storage.module';
@@ -7,9 +8,6 @@ import { MoviesController } from './controller/movies.controller';
 import { MoviesService } from './controller/movies.service';
 import { LoggingService } from './logging/logging.service';
 import { loadConfig } from './config/environment';
-import { ConfigModule } from '@nestjs/config';
-
-const appConfig = loadConfig();
 
 @Module({
   imports: [
@@ -25,7 +23,7 @@ const appConfig = loadConfig();
     MoviesService,
     {
       provide: 'APP_CONFIG',
-      useValue: appConfig,
+      useFactory: () => loadConfig(),
     },
     LoggingService,
   ],

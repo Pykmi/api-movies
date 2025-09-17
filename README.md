@@ -90,3 +90,35 @@ npm run start:dev
 
 - Steps 2–4 (`docker-compose up -d` → `npm run db:migrate` → `npm run db:seed`) only need to be done **once** when setting up your local environment.
 - After that, you can just run `npm run start:dev` to get going.m install
+
+## Environment Variables
+
+This project uses environment variables defined in a `.env` file.  
+A `.env.sample` file is included in the repository — copy or rename it to `.env` before running the app:
+
+```bash
+cp .env.sample .env
+```
+
+### Important variables
+
+- **`API_KEY`** – required for authenticating API requests.  
+  When running locally, you can use the value provided in `.env.sample`.
+
+- **Database settings** (`POSTGRES_HOST`, `POSTGRES_PORT`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_NAME`)  
+  These are preconfigured for local development with Docker.
+
+### Using the API Key
+
+All requests to the API require the `x-api-key` header. For example:
+
+```http
+GET /movies
+x-api-key: supersecret123
+```
+
+When testing with **Swagger UI** (http://localhost:3000/api), you must:
+
+1. Click the **Authorize** button at the top right.
+2. Enter the same value from `API_KEY` in your `.env` file.
+3. Authorize and run requests.

@@ -5,6 +5,7 @@ export enum Environment {
 }
 
 export interface AppConfig {
+  apikey: string;
   env: Environment;
   port: number;
   db: {
@@ -33,6 +34,7 @@ export function loadConfig(): AppConfig {
   }
 
   return {
+    apikey: process.env.API_KEY ?? '',
     env,
     port: parseInt(process.env.PORT ?? '3000', 10),
     db: {
