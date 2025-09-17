@@ -23,23 +23,6 @@ import { CreateMovieDto } from './create-movie.dto';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Get()
-  @ApiOperation({
-    summary: 'Get all movies',
-    description: 'Returns all movies with director and actors',
-  })
-  @ApiOkResponse({ type: [MovieDto] })
-  @ApiServiceUnavailableResponse({
-    description: 'Database unavailable',
-    type: ErrorResponse,
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Missing or invalid API key',
-  })
-  async findAll(): Promise<MovieWithRelations[]> {
-    return this.moviesService.findAllWithRelations();
-  }
-
   @Post()
   @ApiOperation({
     summary: 'Create a new movie',
@@ -53,6 +36,10 @@ export class MoviesController {
     description: 'Validation failed',
     type: ErrorResponse,
   })
+  @ApiServiceUnavailableResponse({
+    description: 'Database unavailable',
+    type: ErrorResponse,
+  })
   @ApiUnauthorizedResponse({
     description: 'Missing or invalid API key',
   })
@@ -62,12 +49,19 @@ export class MoviesController {
 
   @Get('search')
   @ApiOperation({
-    summary: 'Get all movies or search',
+    summary: 'List or search movies',
     description:
-      'Returns all movies with director and actors. If `search` query param is provided, performs a keyword search.',
+      'Returns all movies with directors and actors. If query param `q` is provided, filters by title, director, or actor name (case-insensitive).',
   })
   @ApiOkResponse({ type: [MovieDto] })
-  async search(@Query('q') q: string): Promise<MovieWithRelations[]> {
+  @ApiServiceUnavailableResponse({
+    description: 'Database unavailable',
+    type: ErrorResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: 'Missing or invalid API key',
+  })
+  async search(@Query('q') q?: string): Promise<MovieWithRelations[]> {
     if (q) {
       return this.moviesService.searchWithRelations(q);
     }

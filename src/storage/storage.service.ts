@@ -79,7 +79,7 @@ export class StorageService {
     const a = alias(people, 'a');
 
     const rows = await this.storage
-      .selectDistinct({ movie: movies }) // avoid duplicates
+      .selectDistinct({ movie: movies })
       .from(movies)
       .leftJoin(d, eq(movies.directorId, d.id))
       .leftJoin(movieActors, eq(movies.id, movieActors.movieId))
