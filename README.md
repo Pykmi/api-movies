@@ -10,13 +10,10 @@ The code is structured for clarity and maintainability so new developers can pic
 - Create a movie with director and actors
 - Search movies by name, director, or actors
 - View movies with relations (actors, director)
-- API documented with **Swagger** (`/api` route)
-- Unit tests for all core layers (controllers, services, storage)
-- Ready for CI/CD pipelines (fast unit tests, optional e2e)
+- API documented with **Swagger** (`/api/docs` route)
 
 ## Project Structure
 
-- src/
 - auth/
 - config/
 - controller/
@@ -117,8 +114,60 @@ GET /movies
 x-api-key: supersecret123
 ```
 
-When testing with **Swagger UI** (http://localhost:3000/api), you must:
+When testing with **Swagger UI** (http://localhost:3000/api/docs), you must:
 
 1. Click the **Authorize** button at the top right.
 2. Enter the same value from `API_KEY` in your `.env` file.
 3. Authorize and run requests.
+
+## API Endpoints
+
+All requests must include the `x-api-key` header with the value from your `.env` file.  
+For local development, the `.env.sample` file provides a working key.
+
+### Health Check
+
+```bash
+curl -H "x-api-key: supersecret123" http://localhost:3000/health
+```
+
+### Get All Movies
+
+```bash
+curl -H "x-api-key: supersecret123" http://localhost:3000/movies/search
+```
+
+### Search Movies by Keyword
+
+Leave the query parameter out to return all movies from the database.
+
+```bash
+curl -H "x-api-key: supersecret123" "http://localhost:3000/movies/search?query=spielberg"
+```
+
+### Create a New Movie
+
+Use the `POST /movies` endpoint to add a new movie to the database.  
+Example request with sample JSON body:
+
+```bash
+curl -X POST http://localhost:3000/movies \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: supersecret123" \
+  -d '{
+    "name": "Inception",
+    "ageLimit": 13,
+    "rating": 5,
+    "year": 2010,
+    "synopsis": "A skilled thief is offered a chance to have his past crimes forgiven if he can implant an idea into someone\'s subconscious.",
+    "director": {
+      "firstName": "Christopher",
+      "lastName": "Nolan"
+    },
+    "actors": [
+      { "firstName": "Leonardo", "lastName": "DiCaprio" },
+      { "firstName": "Joseph", "lastName": "Gordon-Levitt" },
+      { "firstName": "Elliot", "lastName": "Page" }
+    ]
+  }'
+```
