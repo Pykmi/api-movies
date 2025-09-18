@@ -171,3 +171,31 @@ curl -X POST http://localhost:3000/movies \
     ]
   }'
 ```
+
+## Possible Improvements
+
+There are several ways this project could be improved in the future:
+
+### 1. Search Performance
+
+- Currently, search queries use simple `ILIKE` filters.
+- For larger datasets, performance can be improved by using PostgreSQL’s **Trigram indexes** (`pg_trgm` extension) or **Full-Text Search (FTS)**.
+- These approaches allow faster lookups and more flexible searching (word-based queries, fuzzy matching).
+
+### 2. Cross-Platform Database Seeding
+
+- At present, data seeding is done with a shell script.
+- This works on Linux and macOS, but developers on Windows may have to seed the database manually.
+- A future improvement would be to make database seeding cross-platform.
+
+### 3. Continuous Integration & Testing
+
+- Pull requests should be blocked from merging unless all **unit tests pass**.
+- Similarly, deployment pipelines should fail fast if tests fail.
+- This ensures code quality and avoids broken deployments.
+
+### 4. Authentication
+
+- The current service uses an API key for request authentication.
+- This is sufficient if requests are only proxied through another trusted service.
+- If the service is exposed directly to users, a more robust authentication mechanism should be implemented, such as **JWT tokens** or OAuth.
